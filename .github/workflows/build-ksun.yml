@@ -6,13 +6,14 @@ on:
       LOCALVERSION:
         description: Kernel localversion
         required: true
-        default: "-AFrenchKernel_KernelSU-Next_"
+        default: "-AFrenchKernel_KernelSU-Next_v"
       AK3_NAME:
         description: Enter custom name for AnyKernel3 artifact
         required: true
       UPLOAD_TO_GH:
         description: Upload to GitHub Release
         type: boolean
+        default: "AFrenchKernel_KernelSU-Next_v"
       
 jobs:
   build:
@@ -72,7 +73,7 @@ jobs:
           if [ -n "${{ github.event.inputs.LOCALVERSION }}" ]; then
             export LOCALVERSION="${{ github.event.inputs.LOCALVERSION }}"
           else
-            export LOCALVERSION="-AFrenchKernel_Basic_Beta"
+            export LOCALVERSION="-AFrenchKernel_KernelSU-Next_Beta"
           fi
           
           bash $(pwd)/build_kernel.sh kernel --jobs $(nproc --all) $DEFCONFIG
