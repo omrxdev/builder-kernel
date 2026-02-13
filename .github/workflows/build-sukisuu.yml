@@ -10,9 +10,6 @@ on:
       AK3_NAME:
         description: Enter custom name for AnyKernel3 artifact
         required: true
-      UPLOAD_TO_GH:
-        description: Upload to GitHub Release
-        type: boolean
         default: "AFrenchKernel_SukiSU-Ultra_v"
       
 jobs:
@@ -156,17 +153,6 @@ jobs:
           echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
         working-directory: kernel_root
 
-      - name: Upload to GitHub Release
-        if: github.event.inputs.UPLOAD_TO_GH == 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.tag.outputs.tag_name }}
-          name: "${{ steps.tag.outputs.tag_name }}"
-          body: ${{ steps.changelog.outputs.changelog }}
-          files: kernel_root/anykernel3/AnyKernel3-${{ github.event.inputs.AK3_NAME }}.zip
-          repository: meafrenchdude/kernel_samsung_a127f
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         
 
 
