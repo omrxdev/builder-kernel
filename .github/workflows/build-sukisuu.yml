@@ -6,13 +6,14 @@ on:
       LOCALVERSION:
         description: Kernel localversion
         required: true
-        default: "-AFrenchKernel_SukiSU-Ultra_"
+        default: "-AFrenchKernel_SukiSU-Ultra_v"
       AK3_NAME:
         description: Enter custom name for AnyKernel3 artifact
         required: true
       UPLOAD_TO_GH:
         description: Upload to GitHub Release
         type: boolean
+        default: "AFrenchKernel_SukiSU-Ultra_v"
       
 jobs:
   build:
