@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout Kernel Source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: meafrenchdude/kernel_samsung_a127f
           path: kernel_root
@@ -96,13 +96,13 @@ jobs:
         working-directory: kernel_root   
 
       - name: Upload config
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
          name: Config-${{ steps.buildKernel.outputs.buildDetails }}
          path: kernel_root/build_config.txt
 
       - name: Upload kernel images
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Kernel-${{ steps.buildKernel.outputs.buildDetails }}
           path: |
@@ -115,7 +115,7 @@ jobs:
           cp kernel_root/arch/arm64/boot/Image kernel_root/anykernel3/
 
       - name: Upload AnyKernel3
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: AnyKernel3-${{ github.event.inputs.AK3_NAME }}
           path: kernel_root/anykernel3/*
